@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XR-Care - Project Setup Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #e9ecef;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #6c757d;
+            margin-bottom: 20px;
+        }
+
+        .github-link {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+
+        .github-link:hover {
+            background-color: #0056b3;
+        }
+
+        .video-links {
+            text-align: center;
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+        }
+
+        .video-link {
+            display: inline-block;
+            margin: 0 15px;
+            padding: 8px 16px;
+            background-color: #28a745;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+
+        .video-link:hover {
+            background-color: #218838;
+        }
+
+        .content-section {
+            margin: 30px 0;
+            padding: 25px;
+            background-color: #ffffff;
+            border: 1px solid #e9ecef;
+            border-radius: 6px;
+        }
+
+        h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 8px;
+        }
+
+        h3 {
+            color: #495057;
+            margin: 25px 0 15px 0;
+            font-size: 1.3rem;
+        }
+
+        h4 {
+            color: #343a40;
+            margin: 15px 0 10px 0;
+            font-size: 1.1rem;
+        }
+
+        .setup-step {
+            background-color: #f8f9fa;
+            padding: 20px;
+            margin: 15px 0;
+            border-left: 4px solid #007bff;
+            border-radius: 0 5px 5px 0;
+            position: relative;
+        }
+
+        .step-number {
+            background-color: #007bff;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            position: absolute;
+            left: -15px;
+            top: 20px;
+            font-size: 0.9rem;
+        }
+
+        .file-item {
+            background-color: #f8f9fa;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border-left: 3px solid #6c757d;
+        }
+
+        .file-name {
+            font-weight: bold;
+            color: #2c3e50;
+            font-size: 1.0rem;
+            margin-bottom: 8px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .file-description {
+            color: #495057;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        code {
+            background-color: #f8f9fa;
+            color: #e83e8c;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+        }
+
+        .code-block {
+            background-color: #2d3748;
+            color: #e2e8f0;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+            border-left: 3px solid #007bff;
+            font-size: 0.9rem;
+        }
+
+        .warning {
+            background-color: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 5px;
+            padding: 12px;
+            margin: 10px 0;
+            border-left: 4px solid #f39c12;
+        }
+
+        .info {
+            background-color: #d1ecf1;
+            border: 1px solid #bee5eb;
+            border-radius: 5px;
+            padding: 12px;
+            margin: 10px 0;
+            border-left: 4px solid #17a2b8;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 20px 0;
+            justify-content: space-between;
+        }
+
+        .tech-item {
+            background-color: #f8f9fa;
+            color: #495057;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+            border: 1px solid #dee2e6;
+            flex: 1;
+            min-width: 180px;
+        }
+
+        .tech-item h3 {
+            color: #2c3e50;
+            margin: 0 0 8px 0;
+            font-size: 1.1rem;
+        }
+
+        .tech-item p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: #6c757d;
+        }
+
+        .requirements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .req-item {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 5px;
+            border: 1px solid #dee2e6;
+            border-left: 4px solid #dc3545;
+        }
+
+        ul, ol {
+            margin: 10px 0;
+            padding-left: 25px;
+        }
+
+        li {
+            margin: 5px 0;
+        }
+
+        .data-flow {
+            background-color: #e7f3ff;
+            padding: 20px;
+            border-radius: 5px;
+            border-left: 4px solid #007bff;
+            margin: 20px 0;
+        }
+
+        .data-flow h4 {
+            color: #0056b3;
+            margin-bottom: 15px;
+        }
+
+        .data-flow ol {
+            margin: 10px 0;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>XR-Care</h1>
+            <p class="subtitle">AR Foundation Project with WebRTC Communication and Annotation System</p>
+            <a href="https://github.com/Nivedhika-R/xrai" class="github-link" target="_blank">
+                View on GitHub
+            </a>
+            <div class="video-links">
+                <a href="https://drive.google.com/file/d/1TUn4LFagaL3BIaKkx0W6b1Q65GuQDl3M/view?usp=drive_link" class="video-link" target="_blank">Demo Video</a>
+                <a href="https://drive.google.com/file/d/1ktKHQfaZTeM2o4cWTojetsWD3eloX5qc/view?usp=sharing" class="video-link" target="_blank">Code Walkthrough</a>
+            </div>
+        </header>
+
+        <div class="content-section">
+            <h2>Project Overview</h2>
+            <p>XR-Care is an AR application that combines Unity's AR Foundation with WebRTC communication and a web-based annotation system. The project enables real-time AR camera feed sharing, annotation creation through a web interface, and synchronized display of annotations in AR space across multiple devices.</p>
+        </div>
+
+        <div class="content-section">
+            <h2>Technology Stack</h2>
+            <div class="tech-stack">
+                <div class="tech-item">
+                    <h3>Unity 6</h3>
+                    <p>Core AR Development Platform</p>
+                </div>
+                <div class="tech-item">
+                    <h3>AR Foundation</h3>
+                    <p>Unity's AR Framework</p>
+                </div>
+                <div class="tech-item">
+                    <h3>ARCore</h3>
+                    <p>Android AR Platform</p>
+                </div>
+                <div class="tech-item">
+                    <h3>WebRTC</h3>
+                    <p>Real-time Communication</p>
+                </div>
+                <div class="tech-item">
+                    <h3>Python Server</h3>
+                    <p>Backend Coordination</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>System Requirements</h2>
+            <div class="requirements-grid">
+                <div class="req-item">
+                    <h3>Hardware</h3>
+                    <ul>
+                        <li>ARCore-compatible Android device</li>
+                        <li>Development PC (Windows/Mac/Linux)</li>
+                        <li>USB cable for device connection</li>
+                        <li>Stable WiFi network</li>
+                    </ul>
+                </div>
+                <div class="req-item">
+                    <h3>Software</h3>
+                    <ul>
+                        <li>Unity 6 (Latest LTS)</li>
+                        <li>AR Foundation package</li>
+                        <li>ARCore XR Plugin</li>
+                        <li>Python 3.8+</li>
+                        <li>Android SDK & NDK</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>Complete Setup Guide</h2>
+            
+            <h3>Phase 1: Unity 6 Installation & Configuration</h3>
+            
+            <div class="setup-step">
+                <div class="step-number">1</div>
+                <h4>Install Unity Hub and Unity 6</h4>
+                <p>First, download and install Unity Hub from <code>unity.com</code>. Then install Unity 6 (Latest LTS) with the following modules:</p>
+                <ul>
+                    <li>Android Build Support</li>
+                    <li>Android SDK & NDK Tools</li>
+                    <li>OpenJDK</li>
+                </ul>
+                <div class="info">
+                    <strong>For Complete Beginners:</strong> Unity Hub is required to manage Unity installations and projects. Make sure you create a Unity account during the installation process.
+                </div>
+            </div>
+
+            <div class="setup-step">
+                <div class="step-number">2</div>
+                <h4>Install Required Packages</h4>
+                <p>Open Package Manager (<strong>Window → Package Manager</strong>) and install:</p>
+                <ul>
+                    <li><code>AR Foundation</code> (latest version)</li>
+                    <li><code>ARCore XR Plugin</code></li>
+                    <li><code>XR Plugin Management</code></li>
+                </ul>
+            </div>
+
+            <div class="setup-step">
+                <div class="step-number">3</div>
+                <h4>Configure XR Plugin Management</h4>
+                <p>Navigate to <strong>Edit → Project Settings → XR Plug-in Management</strong></p>
+                <ul>
+                    <li>Switch to Android platform tab</li>
+                    <li>Enable <code>ARCore</code> provider</li>
+                    <li>Ensure AR Foundation is properly configured</li>
+                </ul>
+            </div>
+
+            <h3>Phase 2: Project Setup</h3>
+
+            <div class="setup-step">
+                <div class="step-number">4</div>
+                <h4>Install Git and Clone the Repository</h4>
+                <p>First install Git from <code>git-scm.com</code> if not already installed. Then clone the repository:</p>
+                <div class="code-block">git clone https://github.com/Nivedhika-R/xrai.git
+cd xrai</div>
+                <p>Open the project in Unity Hub by clicking "Add" and selecting the cloned folder.</p>
+                <div class="info">
+                    <strong>Alternative:</strong> If you don't want to use Git, you can download the project as a ZIP file from GitHub and extract it.
+                </div>
+            </div>
+
+            <div class="setup-step">
+                <div class="step-number">5</div>
+                <h4>Switch to Android Platform</h4>
+                <p>Switch build platform to Android:</p>
+                <div class="code-block">File → Build Settings → Android → Switch Platform</div>
+            </div>
+
+            <div class="setup-step">
+                <div class="step-number">6</div>
+                <h4>Configure Player Settings</h4>
+                <p>Navigate to <strong>Edit → Project Settings → Player</strong> and configure:</p>
+                <ul>
+                    <li><strong>Company Name:</strong> Your company name</li>
+                    <li><strong>Product Name:</strong> XR-Care</li>
+                    <li><strong>Package Name:</strong> com.yourcompany.xrcare</li>
+                    <li><strong>Minimum API Level:</strong> API Level 24 (Android 7.0)</li>
+                    <li><strong>Target API Level:</strong> API Level 33</li>
+                    <li><strong>Scripting Backend:</strong> IL2CPP</li>
+                    <li><strong>Target Architectures:</strong> ARM64 ✓</li>
+                    <li><strong>Internet Access:</strong> Require</li>
+                    <li><strong>Auto Graphics API:</strong> Uncheck this option</li>
+                    <li><strong>Graphics APIs:</strong> Remove Vulkan (keep only OpenGLES3)</li>
+                </ul>
+                <div class="warning">
+                    <strong>Important:</strong> Uncheck Auto Graphics API and remove Vulkan to ensure compatibility with AR Foundation and ARCore.
+                </div>
+            </div>
+
+            <h3>Phase 3: Python Server Setup</h3>
+
+            <div class="setup-step">
+                <div class="step-number">7</div>
+                <h4>Install Python and Navigate to Server Directory</h4>
+                <p>First, install Python 3.8 or higher from <code>python.org</code> if not already installed. Make sure to check "Add Python to PATH" during installation.</p>
+                <p>Then navigate to the server directory:</p>
+                <div class="code-block">cd Server~/</div>
+                <div class="info">
+                    <strong>Verify Python Installation:</strong> Run <code>python --version</code> in command prompt/terminal to confirm Python is installed correctly.
+                </div>
+            </div>
+
+            <div class="setup-step">
+                <div class="step-number">8</div>
+                <h4>Create SSL Certificate</h4>
+                <p>Generate a self-signed certificate for HTTPS:</p>
+                <div class="code-block">openssl req -new -x509 -keyout server.pem -out server.pem -days 365 -nodes</div>
+                <div class="info">
+                    <strong>Note:</strong> Install OpenSSL if not available on your system.
+                </div>
+            </div>
+
+            <div class="setup-step">
+                <div class="step-number">9</div>
+                <h4>Install Python Dependencies</h4>
+                <div class="code-block">pip install -r requirements.txt</div>
+            </div>
+
+            <div class="setup-step">
+                <div class="step-number">10</div>
+                <h4>Find Your IP Address and Start the Server</h4>
+                <p>First, find your computer's IP address:</p>
+                <div class="code-block">Windows: ipconfig
+Mac/Linux: ifconfig
+or use: hostname -I</div>
+                <p>Look for your local IP address (usually starts with 192.168.x.x or 10.0.x.x)</p>
+                <p>Then start the server with your IP address:</p>
+                <div class="code-block">python server.py --ip &lt;YOUR_IP_ADDRESS&gt; --port 8000 --pem server.pem</div>
+                <p>Example: <code>python server.py --ip 192.168.1.100 --port 8000 --pem server.pem</code></p>
+            </div>
+
+            <div class="setup-step">
+                <div class="step-number">11</div>
+                <h4>Launch Preview Application</h4>
+                <p>In a separate terminal:</p>
+                <div class="code-block">python preview.py --ip &lt;YOUR_IP_ADDRESS&gt;</div>
+            </div>
+
+            <h3>Phase 4: Unity Configuration & Deployment</h3>
+
+            <div class="setup-step">
+                <div class="step-number">12</div>
+                <h4>Open XaiRScene</h4>
+                <p>Navigate to the Scenes folder and open <code>XaiRScene.unity</code>.</p>
+            </div>
+
+            <div class="setup-step">
+                <div class="step-number">13</div>
+                <h4>Configure Network Settings</h4>
+                <p>In the XAIRClient GameObject:</p>
+                <ul>
+                    <li>Set <strong>IP Address</strong> field to your server IP</li>
+                    <li>Set <strong>Port</strong> to <code>8000</code></li>
+                </ul>
+            </div>
+
+            <div class="setup-step">
+                <div class="step-number">14</div>
+                <h4>Enable Developer Mode on Android Device</h4>
+                <p>Complete beginner setup for Android device:</p>
+                <ol>
+                    <li>Go to <strong>Settings → About Phone</strong></li>
+                    <li>Tap <strong>Build Number</strong> 7 times to enable Developer Options</li>
+                    <li>Go to <strong>Settings → Developer Options</strong></li>
+                    <li>Enable <strong>USB Debugging</strong></li>
+                    <li>Enable <strong>Stay Awake</strong> (optional but helpful)</li>
+                </ol>
+                <p>Connect device via USB cable and verify connection:</p>
+                <div class="code-block">adb devices</div>
+                <p>You should see your device listed. If not, install ADB drivers for your device.</p>
+                <div class="warning">
+                    <strong>ARCore Compatibility:</strong> Verify your device supports ARCore at <code>developers.google.com/ar/devices</code>
+                </div>
+            </div>
+
+            <div class="setup-step">
+                <div class="step-number">15</div>
+                <h4>Build and Run</h4>
+                <p>In Unity:</p>
+                <ul>
+                    <li>Go to <strong>File → Build Settings</strong></li>
+                    <li>Ensure XaiRScene is added to scenes</li>
+                    <li>Select your Android device</li>
+                    <li>Click <strong>Build and Run</strong></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>File Structure & Descriptions</h2>
+            
+            <h3>Unity Scripts</h3>
+            
+            <div class="file-item">
+                <div class="file-name">AcceptAnyCertificate.cs</div>
+                <div class="file-description">
+                    This solves a common development problem with HTTPS certificates.
+                </div>
+            </div>
+
+            <div class="file-item">
+                <div class="file-name">AndroidCameraManager.cs</div>
+                <div class="file-description">
+                    Handles the phone camera for AR on Android devices. This implements our camera interface for Android AR using Unity's ARFoundation.
+                </div>
+            </div>
+
+            <div class="file-item">
+                <div class="file-name">ARPlaceCube.cs</div>
+                <div class="file-description">
+                    This is the heart of the AR system. It solves the hardest problem: converting 2D screen coordinates to 3D world positions.
+                </div>
+            </div>
+
+            <div class="file-item">
+                <div class="file-name">ConcurrentWebRequestManager.cs</div>
+                <div class="file-description">
+                    Solves a specific problem: some servers can't handle multiple requests at once.
+                </div>
+            </div>
+
+            <div class="file-item">
+                <div class="file-name">ICameraDeviceManager.cs</div>
+                <div class="file-description">
+                    This is an interface that defines what camera systems should be able to do. This pattern lets us swap between Android AR cameras and regular webcams without changing other code.
+                </div>
+            </div>
+
+            <div class="file-item">
+                <div class="file-name">MediaManager.cs</div>
+                <div class="file-description">
+                    Coordinates camera and microphone. It uses the Singleton pattern so there's only one and is your 'media coordinator'.
+                </div>
+            </div>
+
+            <div class="file-item">
+                <div class="file-name">MicrophoneManager.cs</div>
+                <div class="file-description">
+                    Handles audio recording with Android permissions.
+                </div>
+            </div>
+
+            <div class="file-item">
+                <div class="file-name">ServerCommunication.cs</div>
+                <div class="file-description">
+                    Manages all server interactions. It handles two completely different types of communication: WebRTC signaling for real-time connections and annotation polling for AR data.
+                </div>
+            </div>
+
+            <div class="file-item">
+                <div class="file-name">Singleton.cs</div>
+                <div class="file-description">
+                    Provides generic singleton pattern for MonoBehaviours to ensure only one copy of important managers exists.
+                </div>
+            </div>
+
+            <div class="file-item">
+                <div class="file-name">WebCamManager.cs</div>
+                <div class="file-description">
+                    Handles regular webcam on computers, implementing the same interface as the Android camera.
+                </div>
+            </div>
+
+            <div class="file-item">
+                <div class="file-name">WebRTCController.cs</div>
+                <div class="file-description">
+                    Manages direct connections between devices using WebRTC. WebRTC is complex because it's a state machine with many steps to work through firewalls and different network conditions.
+                </div>
+            </div>
+
+            <div class="file-item">
+                <div class="file-name">XAIRClient.cs</div>
+                <div class="file-description">
+                    This is the main controller that orchestrates everything. It's the conductor of the orchestra, coordinating all other systems.
+                </div>
+            </div>
+
+            <h3>Python Server Scripts</h3>
+            
+            <div class="file-item">
+                <div class="file-name">preview_annotation.py</div>
+                <div class="file-description">
+                    Creates a web page for viewing AR camera feed and creating annotations using Gradio.
+                </div>
+            </div>
+
+            <div class="file-item">
+                <div class="file-name">server_annotation.py</div>
+                <div class="file-description">
+                    This is the backend server that coordinates Unity, WebRTC, and web interface. It's the central hub managing all communication.
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>System Data Flow</h2>
+            
+            <div class="data-flow">
+                <h4>Complete Data Flow:</h4>
+                <ol>
+                    <li>Unity's AndroidCameraManager captures AR camera frames with 3D position data</li>
+                    <li>XAIRClient sends images to Python server via ServerCommunication</li>
+                    <li>server_annotation.py stores images and makes them available to web interface</li>
+                    <li>preview_annotation.py fetches images and lets users draw annotations</li>
+                    <li>Web annotations go back to server_annotation.py with coordinate data</li>
+                    <li>Unity polls server for new annotations via ServerCommunication</li>
+                    <li>ARPlaceCube converts 2D coordinates to 3D positions using pose matrices</li>
+                    <li>3D annotation objects appear in AR space</li>
+                </ol>
+            </div>
+
+            <div class="data-flow">
+                <h4>WebRTC Connection Flow (runs in parallel):</h4>
+                <ol>
+                    <li>Unity logs into server, gets client ID</li>
+                    <li>WebRTCController creates connection offer or waits for offers</li>
+                    <li>server_annotation.py facilitates SDP and ICE candidate exchange</li>
+                    <li>Direct WebRTC connection established for real-time communication</li>
+                    <li>Data channel used for sending messages between Unity instances</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>Troubleshooting Guide</h2>
+            
+            <h3>Unity Setup Issues</h3>
+            
+            <div class="file-item">
+                <div class="file-name">Unity Hub won't install Unity 6</div>
+                <div class="file-description">
+                    <strong>Solution:</strong> Ensure you have sufficient disk space (at least 8GB free). Try running Unity Hub as administrator. If still failing, download Unity 6 directly from Unity Archive and install manually.
+                </div>
+            </div>
+
+            <div class="file-item">
+                <div class="file-name">AR Foundation packages not installing</div>
+                <div class="file-description">
+                    <strong>Solution:</strong> Make sure you're connected to the internet. Try refreshing Package Manager (Window → Package Manager → Refresh). If packages show errors, switch to "In Project" view and remove, then reinstall.
+                </div>
+            </div>
+
+            <div class="file-item">
+                <div class="file-name">"ARCore provider not available" error</div>
+                <div class="file-description">
+                    <strong>Solution:</strong> Ensure you've switched to Android platform first (File → Build Settings → Android → Switch Platform). Then go to Project Settings → XR Plug-in Management → Android tab and enable ARCore.
+                </div>
+            </div>
+
+            <div class="file-item">
+                <div class="file-name">Build fails with "Vulkan" or graphics API errors</div>
+                <div class="file-description">
+                    <strong>Solution:</strong> Go to Project Settings → Player → Android → Graphics APIs. Uncheck "Auto Graphics API" and remove Vulkan from the list. Keep only OpenGLES3. This is crucial for AR Foundation compatibility.
+                </div>
+            </div>
+
+            <h3>Python Server Issues</h3>
+            
+            <div class="file-item">
+                <div class="file-name">"Python not recognized" command error</div>
+                <div class="file-description">
+                    <strong>Solution:</strong> Python is not in your system PATH. Reinstall Python from python.org and check "Add Python to PATH" during installation. Alternatively, use full path: <code>C:\Python39\python.exe</code> (adjust version/path as needed).
+                </div>
+            </div>
+
+            <div class="file-item">
+                <div class="file-name">"pip install -r requirements.txt" fails</div>
+                <div class="file-description">
+                    <strong>Solution:</strong> Try upgrading pip first: <code>python -m pip install --upgrade pip</code>. If still failing, install packages individually. For permission errors on Windows, run command prompt as administrator.
+                </div>
+            </div>
+
+            <div class="file-item">
+                <div class="file-name">"openssl not recognized" error</div>
+                <div class="file-description">
+                    <strong>Solution:</strong> Install OpenSSL from <code>slproweb.com/products/Win32OpenSSL.html</code> (Windows) or use <code>brew install openssl</code> (Mac). For quick testing, you can skip SSL and modify server.py to use HTTP instead of HTTPS.
+                </div>
+            </div>
+
+            <div class="file-item">
+                <div class="file-name">Server starts but Unity can't connect</div>
+                <div class="file-description">
+                    <strong>Solution:</strong> Check firewall settings - allow Python through Windows Firewall. Ensure both PC and Android device are on same WiFi network. Verify IP address is correct using <code>ipconfig</code>. Try disabling antivirus temporarily.
+                </div>
+            </div>
+
+            <h3>Android Device Issues</h3>
+            
+            <div class="file-item">
+                <div class="file-name">"adb devices" shows no devices</div>
+                <div class="file-description">
+                    <strong>Solution:</strong> Install proper USB drivers for your device from manufacturer's website. Try different USB cable. Enable "File Transfer" mode on Android when connected. Restart ADB: <code>adb kill-server</code> then <code>adb start-server</code>.
+                </div>
+            </div>
+
+            <div class="file-item">
+                <div class="file-name">Device shows "unauthorized" in adb</div>
+                <div class="file-description">
+                    <strong>Solution:</strong> Look for USB debugging authorization popup on your Android device and tap "Always allow from this computer" then "OK". If no popup appears, revoke USB debugging authorizations in Developer Options and reconnect.
+                </div>
+            </div>
+
+            <div class="file-item">
+                <div class="file-name">"Device doesn't support ARCore" error</div>
+                <div class="file-description">
+                    <strong>Solution:</strong> Check your device compatibility at <code>developers.google.com/ar/devices</code>. If supported but still failing, install ARCore app from Google Play Store manually. Some devices need ARCore to be updated separately.
+                </div>
+            </div>
+
+            <div class="file-item">
+                <div class="file-name">App installs but crashes immediately</div>
+                <div class="file-description">
+                    <strong>Solution:</strong> Check Android logs: <code>adb logcat</code>. Common causes: missing permissions in AndroidManifest.xml, incompatible architecture (ensure ARM64 is selected), or missing ARCore installation. Try building in Development mode first.
+                </div>
+            </div>
+
+            <h3>Network and Communication Issues</h3>
+            
+            <div class="file-item">
+                <div class="file-name">Can't find IP address</div>
+                <div class="file-description">
+                    <strong>Solution:</strong> Use these commands - Windows: <code>ipconfig | findstr IPv4</code>, Mac: <code>ifconfig | grep inet</code>, or visit <code>whatismyipaddress.com</code> for external IP. Your local IP usually starts with 192.168.x.x or 10.0.x.x.
+                </div>
+            </div>
+
+            <div class="file-item">
+                <div class="file-name">WebRTC connection fails</div>
+                <div class="file-description">
+                    <strong>Solution:</strong> Ensure both devices are on same network. Check router settings - some routers block peer-to-peer connections. Try using mobile hotspot for testing. Verify server is running and accepting connections.
+                </div>
+            </div>
+
+            <div class="file-item">
+                <div class="file-name">Annotation system not working</div>
+                <div class="file-description">
+                    <strong>Solution:</strong> Check if preview.py is running and accessible via web browser. Verify Unity is sending images to server (check server console output). Ensure coordinate conversion is working - test with simple annotations first.
+                </div>
+            </div>
+
+            <h3>General Performance Issues</h3>
+            
+            <div class="file-item">
+                <div class="file-name">AR tracking is jittery or unstable</div>
+                <div class="file-description">
+                    <strong>Solution:</strong> Ensure good lighting conditions - AR tracking needs sufficient light. Clean camera lens. Move device slowly during initialization. Some devices perform better in landscape orientation.
+                </div>
+            </div>
+
+            <div class="file-item">
+                <div class="file-name">App runs very slowly</div>
+                <div class="file-description">
+                    <strong>Solution:</strong> Lower camera resolution in AndroidCameraManager settings. Reduce annotation polling frequency. Close other apps running on Android device. Use Release build instead of Debug build for better performance.
+                </div>
+            </div>
+
+            <h3>Quick Diagnostic Commands</h3>
+            
+            <div class="info">
+                <strong>Use these commands to diagnose issues:</strong><br>
+                • Check Unity Console for errors (Window → General → Console)<br>
+                • Android logs: <code>adb logcat | grep Unity</code><br>
+                • Test Python server: Open <code>http://YOUR_IP:8000</code> in browser<br>
+                • Network test: <code>ping YOUR_IP_ADDRESS</code><br>
+                • Check ADB connection: <code>adb devices -l</code><br>
+                • Python version: <code>python --version</code><br>
+                • Unity version: Help → About Unity
+            </div>
+
+            <div class="warning">
+                <strong>Still Having Issues?</strong> Document the exact error message, your operating system, device model, and steps you've tried. Check the demo video and code walkthrough for additional context. Consider testing with a different Android device if available.
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
